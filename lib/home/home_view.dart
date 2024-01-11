@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:qisthi_fb/pages/github/github.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -14,20 +15,7 @@ class HomeView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            OutlinedButton(
-              onPressed: () {},
-              child: const Padding(
-                padding: EdgeInsets.all(8),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    FaIcon(FontAwesomeIcons.github),
-                    SizedBox(width: 10),
-                    Text('Go to GitHub'),
-                  ],
-                ),
-              ),
-            ),
+            const GitHub(),
             const SizedBox(height: 10),
             OutlinedButton(
               onPressed: () {},
