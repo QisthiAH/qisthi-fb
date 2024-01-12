@@ -3,7 +3,7 @@ part of '_index.dart';
 Future<List<ProductX>> getColl() async {
   List<ProductX> users = [];
   final result = await FirebaseFirestore.instance
-      .collection('username')
+      .collection('productName')
       .limit(3)
       .orderBy('created_at', descending: true)
       .startAfter([userList.isEmpty ? '9999-99-99' : userList.last.createdAt]).get();
@@ -14,7 +14,7 @@ Future<List<ProductX>> getColl() async {
 }
 
 Future<DocumentSnapshot<Map<String, dynamic>>> getDoc(String id) async {
-  final result = await FirebaseFirestore.instance.collection('userDetail').doc(id).get();
+  final result = await FirebaseFirestore.instance.collection('prductDetail').doc(id).get();
   return result;
 }
 
@@ -24,10 +24,10 @@ Future<void> create(ProductX data) async {
   final nama = data.nama;
   final createdAt = data.createdAt;
   await FirebaseFirestore.instance
-      .collection('username')
+      .collection('productName')
       .doc(docId)
       .set({'nama': nama, 'id': docId, 'created_at': createdAt});
-  await FirebaseFirestore.instance.collection('userDetail').doc(docId).set(map);
+  await FirebaseFirestore.instance.collection('productDetail').doc(docId).set(map);
   userList.insert(0, data);
 }
 
@@ -37,10 +37,10 @@ Future<void> update(ProductX updateProduct) async {
   final nama = updateProduct.nama;
   final createdAt = updateProduct.createdAt;
   await FirebaseFirestore.instance
-      .collection('username')
+      .collection('productName')
       .doc(docId)
       .set({'nama': nama, 'id': docId, 'created_at': createdAt});
-  await FirebaseFirestore.instance.collection('userDetail').doc(docId).set(map);
+  await FirebaseFirestore.instance.collection('productDetail').doc(docId).set(map);
   final index = userList.indexWhere((element) => element.id == docId);
   userList[index] = updateProduct;
 }
@@ -55,8 +55,8 @@ Future<void> loadmore() async {
 
 Future delete(String id) async {
   var docId = id;
-  await FirebaseFirestore.instance.collection('username').doc(docId).delete();
-  await FirebaseFirestore.instance.collection('userDetail').doc(docId).delete();
+  await FirebaseFirestore.instance.collection('productName').doc(docId).delete();
+  await FirebaseFirestore.instance.collection('productDetail').doc(docId).delete();
   final index = userList.indexWhere((element) => element.id == id);
   userList.removeAt(index);
 }
