@@ -60,15 +60,24 @@ class AuthView extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
-                OutlinedButton(
-                  onPressed: snapshot.data == null
-                      ? null
-                      : () async {
-                          await FirebaseAuth.instance.signOut();
-                        },
-                  child: const Text('sign out'),
-                ),
+                // const SizedBox(height: 10),
+                // OutlinedButton(
+                //   onPressed: snapshot.data == null
+                //       ? null
+                //       : () async {
+                //           await FirebaseAuth.instance.signOut();
+                //         },
+                //   child: const Text('sign out'),
+                // ),
+                // const SizedBox(height: 10),
+                //     OutlinedButton(
+                //       onPressed: snapshot.data == null
+                //           ? null
+                //           : () async {
+                //               await FirebaseAuth.instance.currentUser!.delete();
+                //             },
+                //       child: const Text('delete account'),
+                //     )
               ],
             );
           },

@@ -14,7 +14,7 @@ Future<List<ProductX>> getColl() async {
 }
 
 Future<DocumentSnapshot<Map<String, dynamic>>> getDoc(String id) async {
-  final result = await FirebaseFirestore.instance.collection('prductDetail').doc(id).get();
+  final result = await FirebaseFirestore.instance.collection('productDetail').doc(id).get();
   return result;
 }
 
