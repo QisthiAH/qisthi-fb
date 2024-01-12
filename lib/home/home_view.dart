@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:qisthi_fb/pages/github/github.dart';
+part of '_index.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -18,7 +16,12 @@ class HomeView extends StatelessWidget {
             const GitHub(),
             const SizedBox(height: 10),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProductView()),
+                );
+              },
               child: const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Row(
@@ -32,35 +35,7 @@ class HomeView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            OutlinedButton(
-              onPressed: () {},
-              child: const Padding(
-                padding: EdgeInsets.all(8),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.person),
-                    SizedBox(width: 10),
-                    Text('Login by anonymous'),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
-            OutlinedButton(
-              onPressed: () {},
-              child: const Padding(
-                padding: EdgeInsets.all(8),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    FaIcon(FontAwesomeIcons.google),
-                    SizedBox(width: 10),
-                    Text('Login by google'),
-                  ],
-                ),
-              ),
-            ),
+            const AuthView(),
           ],
         ),
       ),

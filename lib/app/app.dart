@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qisthi_fb/home/home_view.dart';
+import 'package:qisthi_fb/home/_index.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

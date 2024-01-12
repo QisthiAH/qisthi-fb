@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "361404178330",
+    "project_id": "qisthi-fb",
+    "storage_bucket": "qisthi-fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361404178330:android:ef798d5dbe7507d1862423",
+        "android_client_info": {
+          "package_name": "com.example.qisthi_fb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsKcfok1onPX92xIdJmmv6STuIubunvkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
