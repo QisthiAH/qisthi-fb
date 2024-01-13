@@ -21,6 +21,8 @@ class ProductDetail extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    SizedBox(width: 100, height: 100, child: Image.network('${snapshot.data!['image_url']}')),
+                    const SizedBox(height: 10),
                     Text('id : ${snapshot.data!['id']}'),
                     Text('nama : ${snapshot.data!['nama']}'),
                     Text('harga : RP ${snapshot.data!['harga'].toString()}'),
