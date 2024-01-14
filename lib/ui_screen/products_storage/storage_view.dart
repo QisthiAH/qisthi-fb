@@ -33,18 +33,6 @@ class _StorageViewState extends State<StorageView> {
                 width: 100,
                 child: Image.network('${pickedImage?.path}'),
               ),
-        // SizedBox(
-        //   height: 100,
-        //   width: 100,
-        //   child: Center(
-        //     child: pickedImage == null
-        //         ? const Text(
-        //             'no image',
-        //             style: TextStyle(fontSize: 15),
-        //           )
-        //         : Image.network('${pickedImage?.path}'),
-        //   ),
-        // ),
         const SizedBox(height: 10),
         OutlinedButton(
           onPressed: () async {
