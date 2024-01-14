@@ -1,4 +1,3 @@
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:qisthi_fb/models/product.dart';
 import 'package:qisthi_fb/ui_screen/products/product_edit.dart';
