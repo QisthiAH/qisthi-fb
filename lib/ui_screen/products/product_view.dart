@@ -19,24 +19,6 @@ class _ProductViewState extends State<ProductView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Product List'),
-        actions: [
-          IconButton(
-            onPressed: () async {
-              await FirebaseAuth.instance.signOut();
-              // ignore: use_build_context_synchronously
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.logout),
-          ),
-          IconButton(
-            onPressed: () async {
-              await FirebaseAuth.instance.currentUser!.delete();
-              // ignore: use_build_context_synchronously
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.dangerous_outlined),
-          ),
-        ],
       ),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,

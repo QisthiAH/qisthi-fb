@@ -4,10 +4,10 @@ class ProductAdd extends StatefulWidget {
   const ProductAdd({super.key});
 
   @override
-  State<ProductAdd> createState() => _ProductAddState();
+  State<ProductAdd> createState() => _ProductEditState();
 }
 
-class _ProductAddState extends State<ProductAdd> {
+class _ProductEditState extends State<ProductAdd> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

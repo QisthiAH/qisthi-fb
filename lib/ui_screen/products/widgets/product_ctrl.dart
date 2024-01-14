@@ -14,9 +14,10 @@ Future<List<ProductX>> getColl() async {
   return users;
 }
 
-Future<DocumentSnapshot<Map<String, dynamic>>> getDoc(String id) async {
+Future<ProductX> getDoc(String id) async {
   final result = await FirebaseFirestore.instance.collection('productDetail').doc(id).get();
-  return result;
+  final user = ProductX.fromMap(result.data() ?? {});
+  return user;
 }
 
 Future<void> create(ProductX data) async {
@@ -39,21 +40,16 @@ Future<void> update(ProductX updateProduct) async {
   final docId = updateProduct.id;
   final nama = updateProduct.nama;
   final createdAt = updateProduct.createdAt;
+  final harga = updateProduct.harga;
+  // final stok = updateProduct.stok;
   await FirebaseFirestore.instance
       .collection('productName')
       .doc(docId)
-      .set({'nama': nama, 'id': docId, 'created_at': createdAt});
+      .set({'nama': nama, 'id': docId, 'created_at': createdAt, 'harga': harga});
   await FirebaseFirestore.instance.collection('productDetail').doc(docId).set(map);
   final index = userList.indexWhere((element) => element.id == docId);
   userList[index] = updateProduct;
-}
-
-Future<void> loadmore() async {
-  final dataColl = await getColl();
-  userList.addAll(dataColl);
-  if (dataColl.length < 3) {
-    isEnd = true;
-  }
+// }
 }
 
 Future delete(String id) async {
@@ -63,4 +59,12 @@ Future delete(String id) async {
   await FirebaseStorage.instance.ref(id).delete();
   final index = userList.indexWhere((element) => element.id == id);
   userList.removeAt(index);
+}
+
+Future<void> loadmore() async {
+  final dataColl = await getColl();
+  userList.addAll(dataColl);
+  if (dataColl.length < 3) {
+    isEnd = true;
+  }
 }

@@ -10,3 +10,7 @@ var isShowClear3 = false;
 var isEnd = false;
 String selectedId = '';
 List<ProductX> userList = [];
+
+final editNamaProduk = TextEditingController();
+final editHargaProduk = TextEditingController();
+final editStokProduk = TextEditingController();

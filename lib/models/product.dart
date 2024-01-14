@@ -4,12 +4,14 @@ class ProductX {
   final String nama;
   final String id;
   final String createdAt;
+  final String imageUrl;
   final int harga;
   final int stok;
   ProductX({
     this.nama = '',
     this.id = '',
     this.createdAt = '',
+    this.imageUrl = '',
     this.harga = 0,
     this.stok = 0,
   });
@@ -18,6 +20,7 @@ class ProductX {
     String? nama,
     String? id,
     String? createdAt,
+    String? imageUrl,
     int? harga,
     int? stok,
   }) {
@@ -25,6 +28,7 @@ class ProductX {
       nama: nama ?? this.nama,
       id: id ?? this.id,
       createdAt: createdAt ?? this.createdAt,
+      imageUrl: imageUrl ?? this.imageUrl,
       harga: harga ?? this.harga,
       stok: stok ?? this.stok,
     );
@@ -36,6 +40,7 @@ class ProductX {
     result.addAll({'nama': nama});
     result.addAll({'id': id});
     result.addAll({'created_at': createdAt});
+    result.addAll({'image_url': imageUrl});
     result.addAll({'harga': harga});
     result.addAll({'stok': stok});
 
@@ -47,6 +52,7 @@ class ProductX {
       nama: map['nama'] ?? '',
       id: map['id'] ?? '',
       createdAt: map['created_at'] ?? '',
+      imageUrl: map['image_url'] ?? '',
       harga: map['harga']?.toInt() ?? 0,
       stok: map['stok']?.toInt() ?? 0,
     );
@@ -58,7 +64,7 @@ class ProductX {
 
   @override
   String toString() {
-    return 'UserX(nama: $nama, id: $id, createdAt: $createdAt, harga: $harga, stok: $stok)';
+    return 'ProductX(nama: $nama, id: $id, createdAt: $createdAt, imageUrl: $imageUrl, harga: $harga, stok: $stok)';
   }
 
   @override
@@ -69,12 +75,13 @@ class ProductX {
         other.nama == nama &&
         other.id == id &&
         other.createdAt == createdAt &&
+        other.imageUrl == imageUrl &&
         other.harga == harga &&
         other.stok == stok;
   }
 
   @override
   int get hashCode {
-    return nama.hashCode ^ id.hashCode ^ createdAt.hashCode ^ harga.hashCode ^ stok.hashCode;
+    return nama.hashCode ^ id.hashCode ^ createdAt.hashCode ^ imageUrl.hashCode ^ harga.hashCode ^ stok.hashCode;
   }
 }

@@ -18,7 +18,7 @@ class ProductDetail extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const ProductEdit()),
+            MaterialPageRoute(builder: (context) => ProductEdit(id: id)),
           );
         },
         child: const Icon(Icons.edit),
@@ -30,13 +30,13 @@ class ProductDetail extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(width: 100, height: 100, child: Image.network('${snapshot.data!['image_url']}')),
+                    SizedBox(width: 100, height: 100, child: Image.network(snapshot.data!.imageUrl)),
                     const SizedBox(height: 10),
-                    Text('id : ${snapshot.data!['id']}'),
-                    Text('nama : ${snapshot.data!['nama']}'),
-                    Text('harga : Rp ${snapshot.data!['harga'].toString()}'),
-                    Text('stok : ${snapshot.data!['stok'].toString()}'),
-                    Text('tanggal pembuatan : ${snapshot.data!['created_at'].toString()}'),
+                    Text('id : ${snapshot.data!.id}'),
+                    Text('nama : ${snapshot.data!.nama}'),
+                    Text('harga : Rp ${snapshot.data!.harga.toString()}'),
+                    Text('stok : ${snapshot.data!.stok.toString()}'),
+                    Text('tanggal pembuatan : ${snapshot.data!.createdAt.toString()}'),
                   ],
                 ),
               )

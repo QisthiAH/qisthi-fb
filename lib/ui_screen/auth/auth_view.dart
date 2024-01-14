@@ -13,14 +13,16 @@ class AuthView extends StatelessWidget {
             return Column(
               children: [
                 OutlinedButton(
-                  onPressed: () async {
-                    await FirebaseAuth.instance.signInAnonymously();
-                    // ignore: use_build_context_synchronously
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const ProductView()),
-                    );
-                  },
+                  onPressed: snapshot.data == null
+                      ? () async {
+                          await FirebaseAuth.instance.signInAnonymously();
+                          // ignore: use_build_context_synchronously
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const UserList()),
+                          );
+                        }
+                      : null,
                   child: const Padding(
                     padding: EdgeInsets.all(8),
                     child: Row(
@@ -35,15 +37,17 @@ class AuthView extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 OutlinedButton(
-                  onPressed: () async {
-                    final provider = GoogleAuthProvider().setCustomParameters({'prompt': 'select_account'});
-                    await FirebaseAuth.instance.signInWithPopup(provider);
-                    // ignore: use_build_context_synchronously
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const ProductView()),
-                    );
-                  },
+                  onPressed: snapshot.data == null
+                      ? () async {
+                          final provider = GoogleAuthProvider().setCustomParameters({'prompt': 'select_account'});
+                          await FirebaseAuth.instance.signInWithPopup(provider);
+                          // ignore: use_build_context_synchronously
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const UserList()),
+                          );
+                        }
+                      : null,
                   child: const Padding(
                     padding: EdgeInsets.all(8),
                     child: Row(
