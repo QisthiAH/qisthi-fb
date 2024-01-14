@@ -26,7 +26,7 @@ class _UserListState extends State<UserList> {
               // ignore: use_build_context_synchronously
               Navigator.pop(context);
             },
-            icon: const Icon(Icons.logout),
+            icon: const Icon(Icons.logout, color: Colors.white),
           ),
           IconButton(
             onPressed: () async {
@@ -34,7 +34,10 @@ class _UserListState extends State<UserList> {
               // ignore: use_build_context_synchronously
               Navigator.pop(context);
             },
-            icon: const Icon(Icons.dangerous_outlined),
+            icon: const Icon(
+              Icons.dangerous_outlined,
+              color: Colors.white,
+            ),
           ),
         ],
         automaticallyImplyLeading: false,
@@ -48,53 +51,55 @@ class _UserListState extends State<UserList> {
                   : SingleChildScrollView(
                       child: Column(
                         children: [
-                          Wrap(
-                            alignment: WrapAlignment.center,
-                            children: [
-                              ...List.generate(
-                                userList.length,
-                                (index) {
-                                  final data = userList[index];
-                                  final id = data.id;
-                                  return GestureDetector(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Container(
-                                        height: 200,
-                                        width: 150,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(20),
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            const SizedBox(height: 10),
-                                            SizedBox(width: 100, height: 100, child: Image.network(data.imageUrl)),
-                                            const SizedBox(height: 10),
-                                            Text(
-                                              data.nama,
-                                              style: const TextStyle(color: Colors.black),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                            Text(
-                                              'Rp ${data.harga.toString()}',
-                                              style: const TextStyle(color: Colors.black),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ],
+                          Center(
+                            child: Wrap(
+                              alignment: WrapAlignment.center,
+                              children: [
+                                ...List.generate(
+                                  userList.length,
+                                  (index) {
+                                    final data = userList[index];
+                                    final id = data.id;
+                                    return GestureDetector(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          height: 200,
+                                          width: 150,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(20),
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              const SizedBox(height: 10),
+                                              SizedBox(width: 100, height: 100, child: Image.network(data.imageUrl)),
+                                              const SizedBox(height: 10),
+                                              Text(
+                                                data.nama,
+                                                style: const TextStyle(color: Colors.black),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                              Text(
+                                                'Rp ${data.harga.toString()}',
+                                                style: const TextStyle(color: Colors.black),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(builder: (context) => UserDetail(id: id)),
-                                      );
-                                    },
-                                  );
-                                },
-                              ),
-                            ],
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => UserDetail(id: id)),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
                           isEnd
                               ? const Text('end of product')

@@ -52,6 +52,16 @@ Future<void> update(ProductX updateProduct) async {
 // }
 }
 
+updateProd(ProductX productX) async {
+  final product = productX.toMap();
+  final docId = productX.id;
+
+  await FirebaseFirestore.instance.collection('productDetail').doc(docId).set(product);
+  await FirebaseStorage.instance.ref(docId).getDownloadURL();
+  final index = userList.indexWhere((element) => element.id == docId);
+  userList[index] = productX;
+}
+
 Future delete(String id) async {
   var docId = id;
   await FirebaseFirestore.instance.collection('productName').doc(docId).delete();

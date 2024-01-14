@@ -60,20 +60,20 @@ class _ProductViewState extends State<ProductView> {
                                   trailing: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      IconButton(
-                                        onPressed: () async {
-                                          final updateProd = ProductX(
-                                            createdAt: data.createdAt,
-                                            id: data.id,
-                                            nama: WordPair.random().toString(),
-                                            harga: 34000,
-                                            stok: 12,
-                                          );
-                                          await update(updateProd);
-                                          setState(() {});
-                                        },
-                                        icon: const Icon(Icons.update),
-                                      ),
+                                      // IconButton(
+                                      //   onPressed: () async {
+                                      //     final updateProd = ProductX(
+                                      //       createdAt: data.createdAt,
+                                      //       id: data.id,
+                                      //       nama: WordPair.random().toString(),
+                                      //       harga: 34000,
+                                      //       stok: 12,
+                                      //     );
+                                      //     await updateProd(updateProd);
+                                      //     setState(() {});
+                                      //   },
+                                      //   icon: const Icon(Icons.update),
+                                      // ),
                                       IconButton(
                                         onPressed: () async {
                                           await delete(id);
