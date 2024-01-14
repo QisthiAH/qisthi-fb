@@ -13,16 +13,14 @@ class AuthView extends StatelessWidget {
             return Column(
               children: [
                 OutlinedButton(
-                  onPressed: snapshot.data == null
-                      ? () async {
-                          await FirebaseAuth.instance.signInAnonymously();
-                          // ignore: use_build_context_synchronously
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const ProductView()),
-                          );
-                        }
-                      : null,
+                  onPressed: () async {
+                    await FirebaseAuth.instance.signInAnonymously();
+                    // ignore: use_build_context_synchronously
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ProductView()),
+                    );
+                  },
                   child: const Padding(
                     padding: EdgeInsets.all(8),
                     child: Row(
@@ -30,24 +28,22 @@ class AuthView extends StatelessWidget {
                       children: [
                         Icon(Icons.person),
                         SizedBox(width: 10),
-                        Text('Login by anonymous'),
+                        Text('Login anonymous'),
                       ],
                     ),
                   ),
                 ),
                 const SizedBox(height: 10),
                 OutlinedButton(
-                  onPressed: snapshot.data == null
-                      ? () async {
-                          final provider = GoogleAuthProvider().setCustomParameters({'prompt': 'select_account'});
-                          await FirebaseAuth.instance.signInWithPopup(provider);
-                          // ignore: use_build_context_synchronously
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const ProductView()),
-                          );
-                        }
-                      : null,
+                  onPressed: () async {
+                    final provider = GoogleAuthProvider().setCustomParameters({'prompt': 'select_account'});
+                    await FirebaseAuth.instance.signInWithPopup(provider);
+                    // ignore: use_build_context_synchronously
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ProductView()),
+                    );
+                  },
                   child: const Padding(
                     padding: EdgeInsets.all(8),
                     child: Row(
@@ -55,29 +51,11 @@ class AuthView extends StatelessWidget {
                       children: [
                         FaIcon(FontAwesomeIcons.google),
                         SizedBox(width: 10),
-                        Text('Login by google'),
+                        Text('Login with google'),
                       ],
                     ),
                   ),
                 ),
-                // const SizedBox(height: 10),
-                // OutlinedButton(
-                //   onPressed: snapshot.data == null
-                //       ? null
-                //       : () async {
-                //           await FirebaseAuth.instance.signOut();
-                //         },
-                //   child: const Text('sign out'),
-                // ),
-                // const SizedBox(height: 10),
-                //     OutlinedButton(
-                //       onPressed: snapshot.data == null
-                //           ? null
-                //           : () async {
-                //               await FirebaseAuth.instance.currentUser!.delete();
-                //             },
-                //       child: const Text('delete account'),
-                //     )
               ],
             );
           },

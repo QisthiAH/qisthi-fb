@@ -101,8 +101,9 @@ class _ProductViewState extends State<ProductView> {
                                       ),
                                     ],
                                   ),
+                                  leading: Image.network(data.imageUrl),
                                   title: Text(data.nama),
-                                  subtitle: Text(data.createdAt),
+                                  subtitle: Text('Rp ${data.harga.toString()}'),
                                   selected: selectedId == id,
                                   onTap: () {
                                     setState(() {

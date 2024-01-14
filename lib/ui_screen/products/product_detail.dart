@@ -14,6 +14,15 @@ class ProductDetail extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Product Detail'),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ProductEdit()),
+          );
+        },
+        child: const Icon(Icons.edit),
+      ),
       body: FutureBuilder(
         future: getDoc(id),
         builder: (context, snapshot) => snapshot.hasData
@@ -25,7 +34,7 @@ class ProductDetail extends StatelessWidget {
                     const SizedBox(height: 10),
                     Text('id : ${snapshot.data!['id']}'),
                     Text('nama : ${snapshot.data!['nama']}'),
-                    Text('harga : RP ${snapshot.data!['harga'].toString()}'),
+                    Text('harga : Rp ${snapshot.data!['harga'].toString()}'),
                     Text('stok : ${snapshot.data!['stok'].toString()}'),
                     Text('tanggal pembuatan : ${snapshot.data!['created_at'].toString()}'),
                   ],

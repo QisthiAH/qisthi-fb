@@ -19,6 +19,8 @@ class _ProductAddState extends State<ProductAdd> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const StorageView(),
+            const SizedBox(height: 20),
             TextField(
               controller: ctrlNamaProduk,
               onChanged: (value) {
@@ -40,8 +42,8 @@ class _ProductAddState extends State<ProductAdd> {
                         icon: const Icon(Icons.clear),
                       )
                     : null,
-                focusedBorder: const OutlineInputBorder(borderSide: BorderSide()),
-                enabledBorder: const OutlineInputBorder(borderSide: BorderSide()),
+                focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
               ),
             ),
             const SizedBox(height: 10),
@@ -66,8 +68,8 @@ class _ProductAddState extends State<ProductAdd> {
                         icon: const Icon(Icons.clear),
                       )
                     : null,
-                focusedBorder: const OutlineInputBorder(borderSide: BorderSide()),
-                enabledBorder: const OutlineInputBorder(borderSide: BorderSide()),
+                focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
               ),
             ),
             const SizedBox(height: 10),
@@ -92,18 +94,20 @@ class _ProductAddState extends State<ProductAdd> {
                         icon: const Icon(Icons.clear),
                       )
                     : null,
-                focusedBorder: const OutlineInputBorder(borderSide: BorderSide()),
-                enabledBorder: const OutlineInputBorder(borderSide: BorderSide()),
+                focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
               ),
             ),
             const SizedBox(height: 10),
             OutlinedButton(
               onPressed: () async {
+                final id = UniqueKey().toString();
+                final dwUrl = await uploadImage(id);
                 final valNama = ctrlNamaProduk.text;
                 final valHarga = int.parse(ctrlHargaProduk.text);
-                final id = UniqueKey().toString();
                 final valStok = int.parse(ctrlStokProduk.text);
                 final newProduct = ProductX(
+                  imageUrl: dwUrl,
                   nama: valNama,
                   harga: valHarga,
                   id: id,
@@ -114,8 +118,10 @@ class _ProductAddState extends State<ProductAdd> {
                   isLoading = true;
                 });
                 await create(newProduct);
+
                 ctrlNamaProduk.clear();
                 ctrlHargaProduk.clear();
+                ctrlStokProduk.clear();
                 setState(() {
                   isLoading = false;
                 });

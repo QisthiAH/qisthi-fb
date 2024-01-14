@@ -7,6 +7,7 @@ Future<List<ProductX>> getColl() async {
       .limit(3)
       .orderBy('created_at', descending: true)
       .startAfter([userList.isEmpty ? '9999-99-99' : userList.last.createdAt]).get();
+  // await FirebaseStorage.instance.ref().getDownloadURL();
   for (var element in result.docs) {
     users.add(ProductX.fromMap(element.data()));
   }
@@ -23,10 +24,12 @@ Future<void> create(ProductX data) async {
   final docId = data.id;
   final nama = data.nama;
   final createdAt = data.createdAt;
+  final imageUrl = data.imageUrl;
+  final harga = data.harga;
   await FirebaseFirestore.instance
       .collection('productName')
       .doc(docId)
-      .set({'nama': nama, 'id': docId, 'created_at': createdAt});
+      .set({'nama': nama, 'id': docId, 'created_at': createdAt, 'image_url': imageUrl, 'harga': harga});
   await FirebaseFirestore.instance.collection('productDetail').doc(docId).set(map);
   userList.insert(0, data);
 }
@@ -57,6 +60,7 @@ Future delete(String id) async {
   var docId = id;
   await FirebaseFirestore.instance.collection('productName').doc(docId).delete();
   await FirebaseFirestore.instance.collection('productDetail').doc(docId).delete();
+  await FirebaseStorage.instance.ref(id).delete();
   final index = userList.indexWhere((element) => element.id == id);
   userList.removeAt(index);
 }
