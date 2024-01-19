@@ -7,7 +7,15 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('walking bookstore')),
+        title: Center(
+          child: Text(
+            'walking bookstore',
+            style: GoogleFonts.grapeNuts(
+              fontSize: 35,
+              color: const Color(0xffbb86fc),
+            ),
+          ),
+        ),
       ),
       body: Center(
         child: Column(

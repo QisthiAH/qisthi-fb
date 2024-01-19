@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:qisthi_fb/models/product.dart';
-import 'package:qisthi_fb/ui_screen/products/widgets/_index.dart';
-import 'package:qisthi_fb/ui_screen/products_storage/_index.dart';
-import 'package:qisthi_fb/ui_screen/products_storage/widgets/storage_ctrl.dart';
+part of '_index.dart';
 
 class ProductEdit extends StatefulWidget {
   const ProductEdit({
@@ -18,6 +14,14 @@ class ProductEdit extends StatefulWidget {
 
 class _ProductEditState extends State<ProductEdit> {
   @override
+  void initState() {
+    super.initState();
+    editNamaProduk.text = product!.nama;
+    editHargaProduk.text = product!.harga.toString();
+    editStokProduk.text = product!.stok.toString();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -32,7 +36,29 @@ class _ProductEditState extends State<ProductEdit> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const StorageView(),
+                  // const StorageView(),
+                  pickedImage == null
+                      ? SizedBox(
+                          height: 150,
+                          width: 150,
+                          child: Image.network(product!.imageUrl),
+                        )
+                      : SizedBox(
+                          height: 150,
+                          width: 150,
+                          child: Image.network(
+                            pickedImage!.path,
+                          ),
+                        ),
+
+                  const SizedBox(height: 20),
+                  OutlinedButton(
+                    onPressed: () async {
+                      pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+                      setState(() {});
+                    },
+                    child: const Text('edit image'),
+                  ),
                   const SizedBox(height: 20),
                   TextField(
                     controller: editNamaProduk,

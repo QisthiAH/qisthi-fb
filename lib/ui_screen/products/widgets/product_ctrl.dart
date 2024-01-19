@@ -16,8 +16,8 @@ Future<List<ProductX>> getColl() async {
 
 Future<ProductX> getDoc(String id) async {
   final result = await FirebaseFirestore.instance.collection('productDetail').doc(id).get();
-  final user = ProductX.fromMap(result.data() ?? {});
-  return user;
+  return product = ProductX.fromMap(result.data() ?? {});
+  // return product;
 }
 
 Future<void> create(ProductX data) async {
@@ -40,16 +40,16 @@ Future<void> update(ProductX updateProduct) async {
   final docId = updateProduct.id;
   final nama = updateProduct.nama;
   final createdAt = updateProduct.createdAt;
+  final imageUrl = updateProduct.imageUrl;
   final harga = updateProduct.harga;
   // final stok = updateProduct.stok;
   await FirebaseFirestore.instance
       .collection('productName')
       .doc(docId)
-      .set({'nama': nama, 'id': docId, 'created_at': createdAt, 'harga': harga});
+      .set({'nama': nama, 'id': docId, 'created_at': createdAt, 'image_url': imageUrl, 'harga': harga});
   await FirebaseFirestore.instance.collection('productDetail').doc(docId).set(map);
   final index = userList.indexWhere((element) => element.id == docId);
   userList[index] = updateProduct;
-// }
 }
 
 updateProd(ProductX productX) async {

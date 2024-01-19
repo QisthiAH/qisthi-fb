@@ -11,6 +11,7 @@ var isEnd = false;
 String selectedId = '';
 List<ProductX> userList = [];
 
-final editNamaProduk = TextEditingController();
-final editHargaProduk = TextEditingController();
-final editStokProduk = TextEditingController();
+final editNamaProduk = TextEditingController(text: product!.nama);
+final editHargaProduk = TextEditingController(text: product!.harga.toString());
+final editStokProduk = TextEditingController(text: product!.stok.toString());
+ProductX? product;

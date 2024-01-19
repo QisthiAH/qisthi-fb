@@ -4,10 +4,10 @@ class ProductAdd extends StatefulWidget {
   const ProductAdd({super.key});
 
   @override
-  State<ProductAdd> createState() => _ProductEditState();
+  State<ProductAdd> createState() => _ProductAddState();
 }
 
-class _ProductEditState extends State<ProductAdd> {
+class _ProductAddState extends State<ProductAdd> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +45,7 @@ class _ProductEditState extends State<ProductAdd> {
                 focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
                 enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
               ),
+              keyboardType: TextInputType.text,
             ),
             const SizedBox(height: 10),
             TextField(
@@ -71,6 +72,7 @@ class _ProductEditState extends State<ProductAdd> {
                 focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
                 enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
               ),
+              keyboardType: TextInputType.number,
             ),
             const SizedBox(height: 10),
             TextField(
@@ -97,6 +99,7 @@ class _ProductEditState extends State<ProductAdd> {
                 focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
                 enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
               ),
+              keyboardType: TextInputType.number,
             ),
             const SizedBox(height: 10),
             OutlinedButton(

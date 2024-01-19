@@ -67,7 +67,7 @@ class _UserListState extends State<UserList> {
                                           height: 200,
                                           width: 150,
                                           decoration: BoxDecoration(
-                                            color: Colors.white,
+                                            color: const Color(0xffB0A695),
                                             borderRadius: BorderRadius.circular(20),
                                           ),
                                           child: Column(
